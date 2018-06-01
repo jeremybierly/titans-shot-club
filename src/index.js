@@ -1,8 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import FormButton from './components/FormButton';
+import NumberInput from './components/NumberInput';
+import App from './components/App.js';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+
+render(<App />, document.getElementById('root'));

@@ -1,0 +1,16 @@
+.formButton label {
+  display: none;
+}
+
+.formButton button {
+  display: block;
+  width: 90%;
+  border: 1px solid rgba(0,0,0,0.6);
+  padding: 8px;
+  border-radius: 4px;
+  background-color: #004b0a;
+  color: white;
+  font-family: Lato;
+  font-size: 24px;
+  margin: 12px auto;
+}

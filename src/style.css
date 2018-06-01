@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1, p {
+  font-family: Lato;
+}
+
+label {
+  display: block;
+  font-family: Lato;
+  font-size: .75rem;
+}
+
+fieldset {
+  margin: 20px;
+  border-radius: 4px;
+  padding: 10px 10px 20px 10px;
+}
+
+legend {font-family: Lato; }

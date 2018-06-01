@@ -1,0 +1,24 @@
+.numberInput {
+  width: 100%;
+  padding: .5em 5%;
+}
+.numberInput label {
+  display:none;
+}
+.numberInput input {
+  display: block;
+  border: 1px solid rgba(0,0,0,0.6);
+  width: 100%;
+  font-family: Lato;
+  font-size: 24px;
+  padding: 8px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #004b0a;
+}
+
+input::-webkit-input-placeholder {color: #004b0a; opacity: .3}
+input:-moz-placeholder {color: #004b0a; opacity: .3}
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; }
