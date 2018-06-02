@@ -19,16 +19,26 @@ class ShotTracker extends Component {
     event.preventDefault();
     const time = new Date().getTime();
     const user = event.target.user.value;
-    const usersRef = firebase.database().ref("users/" + user);
-    const shotsRef = usersRef.child("shots")
-    const shots = {
-      made: event.target.makes.value || 0,
-      attempted: event.target.attempts.value || 0,
-      when: time
+    const shotsMade = parseInt(event.target.makes.value || 0);
+    const shotsAttempted = parseInt(event.target.attempts.value || 0);
+    if (shotsMade > shotsAttempted) {
+      window.alert("Error: Shots made larger than attempted");
+    } else if (shotsMade < 0) {
+      window.alert("Error: Shots must be 0 or higher");
+    } else if (user === "") {
+      window.alert("Error: You must be logged in to track shots");
+    } else {
+      const usersRef = firebase.database().ref("users/" + user);
+      const shotsRef = usersRef.child("shots")
+      const shots = {
+        made: shotsMade,
+        attempted: shotsAttempted,
+        when: time
+      }
+      shotsRef.push(shots);
+      event.target.makes.value = null;
+      event.target.attempts.value = null;
     }
-    shotsRef.push(shots);
-    event.target.makes.value = null;
-    event.target.attempts.value = null;
   }
 
   render() {

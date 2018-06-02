@@ -4,7 +4,7 @@ import {
   withRouter,
 } from 'react-router-dom';
 
-import { auth } from '../firebase';
+import * as firebase from 'firebase';
 import * as routes from '../constants/routes';
 import "../styles/signUp.css";
 
@@ -33,6 +33,7 @@ class SignUpForm extends Component {
   }
 
   onSubmit = (event) => {
+    const auth = firebase.auth();
     const {
       username,
       email,

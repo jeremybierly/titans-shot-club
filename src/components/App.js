@@ -80,7 +80,7 @@ class App extends Component {
           />
           <Route onChange={this.closeNav}
             exact path={routes.ACCOUNT}
-            component={() => <AccountPage />}
+            component={() => <AccountPage authUser={this.state.authUser} />}
           />
           <Route onChange={this.closeNav}
             exact path={routes.SHOT_TRACKER}

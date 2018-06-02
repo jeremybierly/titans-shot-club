@@ -11,6 +11,10 @@ body {
   text-align: center;
 }
 
+.myAccount h1 {
+  text-align: center;
+}
+
 h1, h2, p {
   font-family: Lato;
 }
@@ -32,3 +36,15 @@ fieldset {
 }
 
 legend {font-family: Lato; }
+
+.selectInput select {
+  width: 90%;
+  margin: 5px 5%;
+  height: 40px;
+  font-size: 24px;
+}
+
+.selectInput label {
+  width: 90%;
+  margin: 5px 5%;
+}
