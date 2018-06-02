@@ -60,7 +60,7 @@ class App extends Component {
 
           <Route onChange={this.closeNav}
             exact path={routes.LANDING}
-            component={() => <LandingPage />}
+            component={() => <SignInPage />}
           />
           <Route
             exact path={routes.SIGN_UP}
@@ -76,7 +76,7 @@ class App extends Component {
           />
           <Route
             exact path={routes.HOME}
-            component={() => <HomePage authUser={this.state.authUser} />}
+            component={() => <ShotTracker authUser={this.state.authUser} />}
           />
           <Route onChange={this.closeNav}
             exact path={routes.ACCOUNT}
