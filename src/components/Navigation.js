@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { Link } from 'react-router-dom';
 
+import logo from '../logo.svg';
 import SignOutButton from './SignOut';
 import * as routes from '../constants/routes';
 import '../styles/navigation.css';
@@ -45,6 +46,7 @@ class Navigation extends Component {
           <span className="menu-item"></span>
           <span className="menu-item"></span>
         </a>
+        <img src={logo} className="App-logo" alt="logo" />
       </header>
     )
   }

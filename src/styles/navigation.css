@@ -7,6 +7,14 @@
     height: 100px;
     position: relative;
   }
+
+  header.img {
+    width: 120px;
+    float: right;
+    margin-top: 15px;
+    margin-right: 20px;
+    float: right;
+  }
   
   @media (min-width: 768px) {
     .mobile-nav-wrap {

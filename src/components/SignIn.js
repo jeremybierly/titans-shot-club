@@ -4,10 +4,11 @@ import { withRouter } from 'react-router-dom';
 import { SignUpLink } from './SignUp';
 import { auth } from '../firebase';
 import * as routes from '../constants/routes';
+import "../styles/signIn.css";
+import "../style.css";
 
 const SignInPage = ({ history }) =>
   <div>
-    <h1>SignIn</h1>
     <SignInForm history={history} />
     <SignUpLink />
   </div>
@@ -64,23 +65,31 @@ class SignInForm extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <input
-          value={email}
-          onChange={event => this.setState(byPropKey('email', event.target.value))}
-          type="text"
-          placeholder="Email Address"
-        />
-        <input
-          value={password}
-          onChange={event => this.setState(byPropKey('password', event.target.value))}
-          type="password"
-          placeholder="Password"
-        />
-        <button disabled={isInvalid} type="submit">
-          Sign In
-        </button>
+        <fieldset>
+          <legend>Sign In</legend>
+          <div className="signIn">
+            <input
+              value={email}
+              onChange={event => this.setState(byPropKey('email', event.target.value))}
+              type="text"
+              placeholder="Email Address"
+            />
+            <input
+              value={password}
+              onChange={event => this.setState(byPropKey('password', event.target.value))}
+              type="password"
+              placeholder="Password"
+            />
+          </div>
+          <div className="formButton">
+            <button disabled={isInvalid} type="submit">
+              Sign In
+            </button>
+          </div>
 
-        { error && <p>{error.message}</p> }
+          {error && <p>{error.message}</p>}
+
+        </fieldset>
       </form>
     );
   }
