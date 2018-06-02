@@ -11,7 +11,7 @@ import SignInPage from './SignIn';
 import PasswordForgetPage from './PasswordForget';
 import HomePage from './Home';
 import AccountPage from './Account';
-import ShotTracker from './ShotTracker';
+import ShotTracker from './ShotTotals';
 
 import * as routes from '../constants/routes';
 import { firebase } from '../firebase';
@@ -57,8 +57,6 @@ class App extends Component {
       <Router>
         <div>
           <Navigation authUser={this.state.authUser} trigger={this.handleNavButtonClick} navOpen={this.state.navOpen} />
-
-          <hr />
 
           <Route onChange={this.closeNav}
             exact path={routes.LANDING}

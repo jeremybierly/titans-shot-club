@@ -7,8 +7,16 @@ body {
   box-sizing: border-box;
 }
 
-h1, p {
+.shotTotals h1, .shotTotals h2{
+  text-align: center;
+}
+
+h1, h2, p {
   font-family: Lato;
+}
+
+h2 {
+  color: rgba(0,0,0,0.5);
 }
 
 label {
