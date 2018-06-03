@@ -7,14 +7,17 @@ import '../styles/formInput.css';
 class FormInput extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+  }
+
+  handleChange = (event) => {
+    this.props.owner.setState({username: event.target.value});
   }
 
   render(){   
   return (
     <div className="formInput">
       <label htmlFor={this.props.id}>{this.props.label}</label>
-      <input type="text" id={this.props.id} name={this.props.id} placeholder={this.props.label} />
+      <input onChange={this.handleChange} type="text" value={this.props.value} id={this.props.id} name={this.props.id} placeholder={this.props.label} />
     </div>
   );
   }
