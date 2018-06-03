@@ -60,7 +60,7 @@ class App extends Component {
 
           <Route onChange={this.closeNav}
             exact path={routes.LANDING}
-            component={() => <SignInPage />}
+            component={() => <LandingPage />}
           />
           <Route
             exact path={routes.SIGN_UP}

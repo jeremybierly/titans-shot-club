@@ -43,7 +43,7 @@ class SignUpForm extends Component {
       history,
     } = this.props;
 
-      auth.doCreateUserWithEmailAndPassword(email, passwordOne)
+    auth.doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
         database.doCreateUser(authUser.user.uid, username, email)
           .then(() => {
@@ -119,11 +119,13 @@ class SignUpForm extends Component {
 }
 
 const SignUpLink = () =>
-  <p>
-    Don't have an account?
-    {' '}
-    <Link to={routes.SIGN_UP}>Sign Up</Link>
-  </p>
+  <div className="landing">
+    <p>
+      Don't have an account?
+      {' '}
+      <Link to={routes.SIGN_UP}>Sign Up</Link>
+    </p>
+  </div>
 
 export default withRouter(SignUpPage);
 
