@@ -15,6 +15,7 @@ const SignUpPage = ({ history }) =>
 
 const INITIAL_STATE = {
   username: '',
+  grade: '',
   email: '',
   passwordOne: '',
   passwordTwo: '',
@@ -35,6 +36,7 @@ class SignUpForm extends Component {
   onSubmit = (event) => {
     const {
       username,
+      grade,
       email,
       passwordOne,
     } = this.state;
@@ -45,7 +47,7 @@ class SignUpForm extends Component {
 
     auth.doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
-        database.doCreateUser(authUser.user.uid, username, email)
+        database.doCreateUser(authUser.user.uid, username, grade, email)
           .then(() => {
             this.setState(() => ({ ...INITIAL_STATE }));
             history.push(routes.HOME);
@@ -87,6 +89,19 @@ class SignUpForm extends Component {
               type="text"
               placeholder="Full Name"
             />
+          </div>
+          <div className="selectInput">
+            <label>Grade Level</label>
+            <select name="grade" id="grade" onChange={event => this.setState(byPropKey('grade', event.target.value))}>
+              <option>Grade</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+            </select>
+          </div>
+          <div className="signUp">
             <input
               value={email}
               onChange={event => this.setState(byPropKey('email', event.target.value))}
