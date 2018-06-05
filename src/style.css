@@ -21,6 +21,11 @@ h1, h2, p {
 
 h2 {
   color: rgba(0,0,0,0.5);
+  margin: 5px 0;
+}
+
+h1 {
+  margin: 20px 0 0 0;
 }
 
 label {
@@ -82,4 +87,13 @@ input:focus:-moz-placeholder { color:transparent; }
   margin: 5px 5%;
   font-size: 1.5em;
   line-height: 1.5em;
+}
+
+.shotTotals p {
+  margin: 5px 20px;
+  font-size: 1.25em;
+}
+
+.shotTotals strong {
+  color: #004b0a;
 }

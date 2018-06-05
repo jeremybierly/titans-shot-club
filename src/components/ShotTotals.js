@@ -28,12 +28,18 @@ class ShotTotals extends Component {
     render() {
         let user = this.props.authUser ? this.props.authUser.uid : ""
         const percentage = this.state.madeShots > 0 ? Math.round(this.state.madeShots / this.state.attemptedShots * 100).toString() + "%" : "0%";
+        const then = new Date("09/01/2018");
+        const now = new Date();
+        const days = Math.ceil((then-now)/(1000*60*60*24));
+        const shotsLeft = 10000-this.state.attemptedShots;
+        const shotsPerDay = Math.ceil(shotsLeft/days);
         return (
             <div className="shotTotals">
                 <h1>Total Percentage: {percentage}</h1>
                 <h2>Total Shots: {this.state.attemptedShots}</h2>
 
                 <ShotTracker authUser={this.props.authUser} />
+                <p>You need to take <strong>{shotsPerDay}</strong> shots per day to make <strong>10,000</strong> by <strong>September 1</strong>.</p>
             </div>
         );
     }
