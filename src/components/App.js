@@ -12,6 +12,7 @@ import PasswordForgetPage from './PasswordForget';
 import Drills from './Drills';
 import AccountPage from './Account';
 import ShotTracker from './ShotTotals';
+import CampTracker from './CampTracker';
 
 import * as routes from '../constants/routes';
 import { firebase } from '../firebase';
@@ -78,13 +79,17 @@ class App extends Component {
             exact path={routes.DRILLS}
             component={() => <Drills authUser={this.state.authUser} />}
           />
-          <Route onChange={this.closeNav}
+          <Route
             exact path={routes.ACCOUNT}
             component={() => <AccountPage authUser={this.state.authUser} />}
           />
-          <Route onChange={this.closeNav}
+          <Route
             exact path={routes.SHOT_TRACKER}
             component={() => <ShotTracker  authUser={this.state.authUser} />}
+          />
+          <Route
+            exact path={routes.CAMP_TRACKER}
+            component={() => <CampTracker  authUser={this.state.authUser} />}
           />
         </div>
       </Router>

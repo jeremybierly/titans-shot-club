@@ -15,6 +15,14 @@ body {
   text-align: center;
 }
 
+.campTracker h1 {
+  text-align: center;
+}
+
+.campTracker p {
+  margin: 20px;
+}
+
 h1, h2, p {
   font-family: Lato;
 }
@@ -72,6 +80,10 @@ legend {font-family: Lato; }
   margin-bottom: 10px;
   text-align: center;
   color: #004b0a;
+}
+
+.dateInput label {
+  display: block;
 }
 input::-webkit-input-placeholder {color: #004b0a; opacity: .3}
 input:-moz-placeholder {color: #004b0a; opacity: .3}
