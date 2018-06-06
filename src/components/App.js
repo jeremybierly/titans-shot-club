@@ -9,7 +9,7 @@ import LandingPage from './Landing';
 import SignUpPage from './SignUp';
 import SignInPage from './SignIn';
 import PasswordForgetPage from './PasswordForget';
-import HomePage from './Home';
+import Drills from './Drills';
 import AccountPage from './Account';
 import ShotTracker from './ShotTotals';
 
@@ -75,8 +75,8 @@ class App extends Component {
             component={() => <PasswordForgetPage />}
           />
           <Route
-            exact path={routes.HOME}
-            component={() => <ShotTracker authUser={this.state.authUser} />}
+            exact path={routes.DRILLS}
+            component={() => <Drills authUser={this.state.authUser} />}
           />
           <Route onChange={this.closeNav}
             exact path={routes.ACCOUNT}
