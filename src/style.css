@@ -89,6 +89,14 @@ input:focus:-moz-placeholder { color:transparent; }
   line-height: 1.5em;
 }
 
+.landing p.homePage {
+  text-align: center;
+}
+
+.landing p.homePage img {
+  max-width: 800px;
+}
+
 .shotTotals p {
   margin: 5px 20px;
   font-size: 1.25em;
