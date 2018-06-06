@@ -10,6 +10,7 @@ class Drills extends Component {
   render() {
     return (
       <div className="drills">
+        <h1>Shooting Drills</h1>
         <h4>Warm Up Shooting Drill</h4>
         <p>5 from each spot in the diagram</p>
         <img src={formShootingDrill} alt="Form Shooting Drill" />

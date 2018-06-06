@@ -20,7 +20,7 @@ class Navigation extends Component {
       <nav className="mobile-nav-wrap" role="navigation">
         <ul className="mobile-header-nav">
           <li><Link to={routes.SHOT_TRACKER}>Track Shots</Link></li>
-          <li><Link to={routes.DRILLS}>Drills</Link></li>
+          <li><Link to={routes.DRILLS}>Shooting Drills</Link></li>
           <li><Link to={routes.ACCOUNT}>Account</Link></li>
           <li><SignOutButton /></li>
         </ul>

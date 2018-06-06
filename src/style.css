@@ -81,6 +81,8 @@ input:focus:-moz-placeholder { color:transparent; }
 
 .landing h1 {
   margin: 20px 5%;
+  color: #004b0a;
+  font-size: 2em;
 }
 
 .landing p {
