@@ -39,7 +39,7 @@ class ShotTotals extends Component {
                 <h2>Total Shots: {this.state.attemptedShots}</h2>
 
                 <ShotTracker authUser={this.props.authUser} />
-                <p>You need to take <strong>{shotsPerDay}</strong> shots per day to make <strong>10,000</strong> by <strong>September 1</strong>.</p>
+                <p>You need to take <strong>{shotsPerDay}</strong> shots per day to make <strong>10,000</strong> by <strong>September 21</strong>.</p>
             </div>
         );
     }
