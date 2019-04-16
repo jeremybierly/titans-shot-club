@@ -28,7 +28,7 @@ class ShotTotals extends Component {
     render() {
         let user = this.props.authUser ? this.props.authUser.uid : ""
         const percentage = this.state.madeShots > 0 ? Math.round(this.state.madeShots / this.state.attemptedShots * 100).toString() + "%" : "0%";
-        const then = new Date("09/21/2018");
+        const then = new Date("09/04/2019");
         const now = new Date();
         const days = Math.ceil((then-now)/(1000*60*60*24));
         const shotsLeft = 10000-this.state.attemptedShots;
