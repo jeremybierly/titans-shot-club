@@ -7,21 +7,35 @@ class ShotTotals extends Component {
         super();
         this.state = {
             madeShots: 0,
-            attemptedShots: 0
+            attemptedShots: 0,
+            campOffset: 0,
         };
     }
 
     componentDidMount() {
         let user = this.props.authUser ? this.props.authUser.uid : ""
-        const usersRef = firebase.database().ref("users/" + user + "/shots");
+        const usersRef = firebase.database().ref("users/" + user + "/shots/");
         usersRef.on('value', snap => {
             const data = snap.val();
             const totalReducer = (accumulator, currentValue) => parseInt(accumulator) + parseInt(currentValue)
             if (data !== null) {
+                
                 this.setState({
                     madeShots: Object.keys(data).map((key) => data[key].made).reduce(totalReducer),
                     attemptedShots: Object.keys(data).map((key) => data[key].attempted).reduce(totalReducer)
                 });
+            }
+        })
+        const campsRef = firebase.database().ref("users/" + user + "/camps/");
+        campsRef.on('value', snap => {
+            const campData = snap.val();
+            if (campData !== null) {
+                const shootingCampOffset = Object.values(campData).filter((item)=> item["type"] === "Shooting Camp").length * 250 || 0;
+                const basketballCampOffset = Object.values(campData).filter((item)=> item["type"] === "Basketball Camp").length * 150 || 0;
+                const regulationGameOffset = Object.values(campData).filter((item)=> item["type"] === "Regulation Game").length * 100 || 0;
+                this.setState({
+                    campOffset: shootingCampOffset + basketballCampOffset + regulationGameOffset
+                })
             }
         })
     }
@@ -31,7 +45,7 @@ class ShotTotals extends Component {
         const then = new Date("09/04/2019");
         const now = new Date();
         const days = Math.ceil((then-now)/(1000*60*60*24));
-        const shotsLeft = 10000-this.state.attemptedShots;
+        const shotsLeft = 10000-this.state.campOffset-this.state.attemptedShots;
         const shotsPerDay = Math.ceil(shotsLeft/days);
         return (
             <div className="shotTotals">
@@ -39,7 +53,7 @@ class ShotTotals extends Component {
                 <h2>Total Shots: {this.state.attemptedShots}</h2>
 
                 <ShotTracker authUser={this.props.authUser} />
-                <p>You need to take <strong>{shotsPerDay}</strong> shots per day to make <strong>10,000</strong> by <strong>September 4</strong>.</p>
+                <p>You need to take <strong>{shotsPerDay}</strong> shots per day to make <strong>{shotsLeft}</strong> by <strong>September 4</strong>.</p>
             </div>
         );
     }
