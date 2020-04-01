@@ -19,7 +19,8 @@ class Navigation extends Component {
 
       <nav className="mobile-nav-wrap" role="navigation">
         <ul className="mobile-header-nav">
-          <li><Link to={routes.SHOT_TRACKER}>Track Shots</Link></li>  
+          <li><Link to={routes.SHOT_TRACKER}>Track Shots</Link></li>
+          <li><Link to={routes.DRIBBLE_TRACKER}>Track Ball Handling Drills</Link></li>  
           <li><Link to={routes.DRILLS}>Shooting Drills</Link></li>
           <li><Link to={routes.CAMP_TRACKER}>Basketball Activity</Link></li>
           <li><Link to={routes.ACCOUNT}>Account</Link></li>

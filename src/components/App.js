@@ -12,6 +12,7 @@ import PasswordForgetPage from './PasswordForget';
 import Drills from './Drills';
 import AccountPage from './Account';
 import ShotTracker from './ShotTotals';
+import DribbleTracker from './DribbleTracker';
 import CampTracker from './CampTracker';
 
 import * as routes from '../constants/routes';
@@ -86,6 +87,10 @@ class App extends Component {
           <Route
             exact path={routes.SHOT_TRACKER}
             component={() => <ShotTracker  authUser={this.state.authUser} />}
+          />
+          <Route
+            exact path={routes.DRIBBLE_TRACKER}
+            component={() => <DribbleTracker  authUser={this.state.authUser} />}
           />
           <Route
             exact path={routes.CAMP_TRACKER}
