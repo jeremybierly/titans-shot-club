@@ -119,3 +119,8 @@ input:focus:-moz-placeholder { color:transparent; }
 .shotTotals strong {
   color: #004b0a;
 }
+
+.shotTotals .videoContainer {
+  padding: 20px;
+  text-align: center;
+}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import YouTube from 'react-youtube';
 import * as firebase from 'firebase';
 import FormButton from './FormButton';
 import '../style.css';
@@ -79,6 +80,9 @@ class DribbleTracker extends Component {
             <FormButton text="Save" label="submit" id="submit" />
           </fieldset>
         </form>
+        <div className="videoContainer"> 
+          <YouTube videoId="DJK267BZ9bQ" />
+        </div>
       </div>
     );
   }
