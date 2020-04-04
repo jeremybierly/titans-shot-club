@@ -4,14 +4,13 @@ import * as firebase from 'firebase';
 import FormButton from './FormButton';
 import '../style.css';
 
-class CampTracker extends Component {
+class DribbleTracker extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      camp: "",
-      type: "",
-      date: "",
-      added: false
+      drillTotals: "",
+      exercise: "",
+      when: ""
     };
   }
 
@@ -20,66 +19,61 @@ class CampTracker extends Component {
     event.preventDefault();
     const time = new Date().getTime();
     const user = event.target.user.value;
-    const campName = event.target.camp.value || "";
-    const campType = event.target.type.value || "";
-    const campDate = event.target.date.value || "";
-    if (campName === "") {
-      window.alert("Error: Please enter a name of the camp");
-    } else if (campType === "") {
+    const dribbleExercise = event.target.exercise.value || "";
+    if (dribbleExercise === "") {
       window.alert("Error: Please select a type of Camp");
-    } else if (campDate === "") {
-      window.alert("Error: Please enter a camp date");
-    } else if (user === "") {
-      window.alert("Error: You must be logged in to enter activty");
     } else {
       const usersRef = firebase.database().ref("users/" + user);
-      const campRef = usersRef.child("camps")
-      const camp = {
-        camp: campName,
-        type: campType,
-        date: campDate,
+      const drillRef = usersRef.child("drills")
+      const drill = {
+        exercise: dribbleExercise,
         when: time
       }
-      campRef.push(camp);
-      event.target.camp.value = null;
-      event.target.date.value = null;
+      drillRef.push(drill);
+      event.target.exercise.value = null;
     }
   }
 
-  handleCampChange = (event) => {
-    this.setState({ camp: event.target.value });
+  handleExerciseChange = (event) => {
+    this.setState({ exercise: event.target.value });
   }
-
-  handleDateChange = (event) => {
-    this.setState({ date: event.target.value });
+  
+  componentDidMount() {
+    let user = this.props.authUser ? this.props.authUser.uid : ""
+    const drillsRef = firebase.database().ref("users/" + user + "/drills/");
+    drillsRef.on('value', snap => {
+        const drillData = snap.val();
+        if (drillData !== null) {
+            const intenseDrillTotal = Object.values(drillData).filter((item)=> item["exercise"] === "5 Minute Intense").length * 500 || 0;
+            const playTotal = Object.values(drillData).filter((item)=> item["exercise"] === "15 Minute Hoops").length * 100 || 0;
+            this.setState({
+                drillTotals: intenseDrillTotal + playTotal
+            })
+        }
+    })
   }
-
   render() {
     let user = this.props.authUser ? this.props.authUser.uid : "";
     return (
-      <div className="campTracker">
-        <h1>Basketball Activity Tracker</h1>
-        <p>Players attending basketball camp will be awarded shots for days attended.  Shooting Camps count as 250 shots, General Basketball Camps are 150, and Regulation Games are 100.</p>
-        <p>Please log each day at basketball camp by entering the name of the camp, the type of camp and the date you attended</p>
+      <div className="shotTotals">
+        <h1>Total Dribbles: {this.state.drillTotals}</h1>
+        <p>Players can track their ball handling exercises in two categories:</p>
+        <div class="drills">
+          <ul>
+            <li>5 Minute Intense workout - counts as 500 dribbles</li>
+            <li>15 Minute Basketball playing - counts as 100 dribbles</li>
+          </ul>
+        </div>
         <form onSubmit={this.onSubmit}>
           <fieldset>
-            <legend>Basketball Activity Tracker</legend>
-            <div className="formInput">
-              <label htmlFor="camp">Activity Name</label>
-              <input onChange={this.handleCampChange} type="text" value={this.state.camp} id="camp" name="camp" placeholder="Camp Name" />
-            </div>
+            <legend>Ball Handling Drills</legend>
             <div className="selectInput">
               <label>Activity Type</label>
-              <select name="type" id="type">
+              <select name="exercise" id="exercise">
                 <option value="">Activity</option>
-                <option value="Basketball Camp">Basketball Camp</option>
-                <option value="Shooting Camp">Shooting Camp</option>
-                <option value="Regulation Game">Regulation Game</option>
+                <option value="5 Minute Intense">5 Minute Intense Ball Handling Drill</option>
+                <option value="15 Minute Hoops">15 Minute Basketball Playing</option>
               </select>
-            </div>
-            <div className="formInput dateInput">
-              <label htmlFor="date">Date Attended (MM/DD/YY)</label>
-              <input onChange={this.handleDateChange} type="text" value={this.state.date} id="date" name="date" placeholder="MM/DD/YY" />
             </div>
             <input type="hidden" name="user" id="user" value={user} />
             <FormButton text="Save" label="submit" id="submit" />
@@ -90,4 +84,4 @@ class CampTracker extends Component {
   }
 }
 
-export default CampTracker;
+export default DribbleTracker;

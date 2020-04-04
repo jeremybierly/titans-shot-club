@@ -43,7 +43,6 @@ class App extends Component {
     }
   };
   componentDidMount() {
-    const usersRef = firebase.database.ref('users');
     firebase.auth.onAuthStateChanged(authUser => {
       if (authUser){
         this.setState(() => ({ authUser }));
