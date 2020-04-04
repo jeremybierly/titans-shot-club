@@ -38,23 +38,27 @@ class DribbleTracker extends Component {
   handleExerciseChange = (event) => {
     this.setState({ exercise: event.target.value });
   }
-  
+
   componentDidMount() {
     let user = this.props.authUser ? this.props.authUser.uid : ""
     const drillsRef = firebase.database().ref("users/" + user + "/drills/");
     drillsRef.on('value', snap => {
-        const drillData = snap.val();
-        if (drillData !== null) {
-            const intenseDrillTotal = Object.values(drillData).filter((item)=> item["exercise"] === "5 Minute Intense").length * 500 || 0;
-            const playTotal = Object.values(drillData).filter((item)=> item["exercise"] === "15 Minute Hoops").length * 100 || 0;
-            this.setState({
-                drillTotals: intenseDrillTotal + playTotal
-            })
-        }
+      const drillData = snap.val();
+      if (drillData !== null) {
+        const intenseDrillTotal = Object.values(drillData).filter((item) => item["exercise"] === "5 Minute Intense").length * 500 || 0;
+        const playTotal = Object.values(drillData).filter((item) => item["exercise"] === "15 Minute Hoops").length * 100 || 0;
+        this.setState({
+          drillTotals: intenseDrillTotal + playTotal
+        })
+      }
     })
   }
   render() {
     let user = this.props.authUser ? this.props.authUser.uid : "";
+    const opts = {
+      width: '350',
+      height: '200'
+    }
     return (
       <div className="shotTotals">
         <h1>Total Dribbles: {this.state.drillTotals}</h1>
@@ -80,8 +84,15 @@ class DribbleTracker extends Component {
             <FormButton text="Save" label="submit" id="submit" />
           </fieldset>
         </form>
-        <div className="videoContainer"> 
-          <YouTube videoId="DJK267BZ9bQ" />
+        <p>Here are some videos of intense ball handling drills to use:</p>
+        <div className="videoContainer">
+          <YouTube videoId="NvuCM5rfx-c" opts={opts} />
+        </div>
+        <div className="videoContainer">
+          <YouTube videoId="DJK267BZ9bQ" opts={opts} />
+        </div>
+        <div className="videoContainer">
+          <YouTube videoId="a6rPVGkGpds" opts={opts} />
         </div>
       </div>
     );
