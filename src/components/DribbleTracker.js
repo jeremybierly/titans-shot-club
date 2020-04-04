@@ -56,8 +56,8 @@ class DribbleTracker extends Component {
   render() {
     let user = this.props.authUser ? this.props.authUser.uid : "";
     const opts = {
-      width: '350',
-      height: '200'
+      width: '336',
+      height: '198'
     }
     return (
       <div className="shotTotals">
