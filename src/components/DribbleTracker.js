@@ -47,8 +47,9 @@ class DribbleTracker extends Component {
       if (drillData !== null) {
         const intenseDrillTotal = Object.values(drillData).filter((item) => item["exercise"] === "5 Minute Intense").length * 500 || 0;
         const playTotal = Object.values(drillData).filter((item) => item["exercise"] === "15 Minute Hoops").length * 100 || 0;
+        const breakawayTotal = Object.values(drillData).filter((item) => item["exercise"] === "Breakaway Basketball Zoom").length * 1000 || 0;
         this.setState({
-          drillTotals: intenseDrillTotal + playTotal
+          drillTotals: intenseDrillTotal + playTotal + breakawayTotal
         })
       }
     })
@@ -78,6 +79,7 @@ class DribbleTracker extends Component {
                 <option value="">Activity</option>
                 <option value="5 Minute Intense">5 Minute Intense Ball Handling Drill</option>
                 <option value="15 Minute Hoops">15 Minute Basketball Playing</option>
+                <option value="Breakaway Basketball Zoom">Breakaway Basketball Zoom Workout</option>
               </select>
             </div>
             <input type="hidden" name="user" id="user" value={user} />
