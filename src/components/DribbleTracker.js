@@ -79,7 +79,6 @@ class DribbleTracker extends Component {
                 <option value="">Activity</option>
                 <option value="5 Minute Intense">5 Minute Intense Ball Handling Drill</option>
                 <option value="15 Minute Hoops">15 Minute Basketball Playing</option>
-                <option value="Breakaway Basketball Zoom">Breakaway Basketball Zoom Workout</option>
               </select>
             </div>
             <input type="hidden" name="user" id="user" value={user} />
