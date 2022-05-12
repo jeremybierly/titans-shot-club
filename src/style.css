@@ -108,7 +108,7 @@ input:focus:-moz-placeholder { color:transparent; }
 }
 
 .landing p.homePage img {
-  max-width: 800px;
+  max-width: 100%;
 }
 
 .shotTotals p {
