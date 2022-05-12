@@ -91,7 +91,7 @@ class SignUpForm extends Component {
             />
           </div>
           <div className="selectInput">
-            <label>Grade Level</label>
+            <label>Grade Level 2022-23 School Year</label>
             <select name="grade" id="grade" onChange={event => this.setState(byPropKey('grade', event.target.value))}>
               <option>Grade</option>
               <option value="3">3</option>
